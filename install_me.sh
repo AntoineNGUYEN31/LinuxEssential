@@ -8,3 +8,8 @@ yum install transmission
 #install chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 yum localinstall google-chrome-stable_current_x86_64.rpm
+#install gcc and g++
+yum install gcc-c++
+#install vlc
+yum install https://download1.rpmfusion.org/free/el/rpmfusion-free-release-7.noarch.rpm
+yum install vlc
