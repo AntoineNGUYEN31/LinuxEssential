@@ -16,3 +16,5 @@ yum install vlc
 #printer HP
 yum install hplip hplip-gui hpijs
 # as normal user: hp-plugin && hp-setup
+#for 7zip file
+yum install p7zip
