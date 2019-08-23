@@ -1,0 +1,44 @@
+#source: https://docs.marklogic.com/guide/installation/procedures#id_28962
+#install:
+rpm -i /tmp/MarkLogicConverters-9.0-4.x86_64.rpm
+#installation dir: /opt/MarkLogic
+#data dir (for config & log): /var/opt/MarkLogic
+#create conf file
+echo "export MARKLOGIC_USER=minwoo">/etc/marklogic.conf
+
+#custom install by overding /etc/marklogic.conf
+
+#export MARKLOGIC_INSTALL_DIR=/opt/MarkLogic 
+#export MARKLOGIC_DATA_DIR=/var/opt/MarkLogic
+#export MARKLOGIC_FSTYPE=ext4
+#export MARKLOGIC_USER=daemon
+#export MARKLOGIC_PID_FILE=/var/run/MarkLogic.pid
+#export MARKLOGIC_UMASK=022
+#export MARKLOGIC_DISABLE_JVM=0
+#export MARKLOGIC_EC2_HOST
+#export TZ=:/etc/localtime
+
+
+#change rights to data dir
+chown -R minwoo /var/opt/MarkLogic
+#start MarkLogic
+/sbin/service MarkLogic start
+
+#to init MarkLogic:
+#source: https://docs.marklogic.com/guide/installation/procedures#id_92457 => Configuring single host
+http://localhost:8001
+#set up password
+
+#query console
+http://localhost:8000/
+
+#REST API
+https://docs.marklogic.com/guide/rest-dev/intro
+
+#uninstall MarkLogic
+#Stop MarkLogic: as the root user, enter the following command:
+#/sbin/service MarkLogic stop
+#If you are uninstalling MarkLogic 9.0-4 or later, and you previously had the converters package installed, you need to uninstall it prior to uninstalling MarkLogic Server: as the root user, enter the following command:
+#rpm -e MarkLogicConverters
+#Uninstall MarkLogic: as the root user, enter the following command:
+#rpm -e MarkLogic
