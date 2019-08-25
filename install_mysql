@@ -1,0 +1,23 @@
+#mysql is replaced by mariadb in Centos 7
+
+yum install mariadb-server
+
+# source: https://www.linode.com/docs/databases/mariadb/how-to-install-mariadb-on-centos-7/
+
+systemctl enable mariadb
+systemctl start mariadb
+#set password for default user (root)
+mysql_secure_installation
+
+# first run
+mysql -u root -p
+create database testdb;
+grant all on testdb.* to 'testuser' identified by 'password';
+exit
+
+# test
+mysql -u testuser -p
+use testdb;
+create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
+show tables;
+exit
