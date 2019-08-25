@@ -1,0 +1,26 @@
+#install postgreSQL
+    #https://www.postgresql.org/download/linux/redhat/
+    yum install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+    yum install postgresql11
+    yum install postgresql11-server
+    /usr/pgsql-11/bin/postgresql-11-setup initdb
+    systemctl enable postgresql-11
+    systemctl start postgresql-11
+#service MarkLogic stop
+    #https://www.a2hosting.com/kb/developer-corner/postgresql/managing-postgresql-databases-and-users-from-the-command-line
+
+#/var/lib/pgsql/11/data/pg_hba.conf => peer to md5
+
+    su - postgres
+
+    createuser --interactive --pwprompt
+
+    createdb -O user dbname
+
+    #GRANT permissions ON DATABASE dbname TO username
+
+    dropdb dbname
+
+    dropuser username
+    
+    psql 
