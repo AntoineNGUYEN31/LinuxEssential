@@ -2,7 +2,7 @@ yum install epel-release
 #install gparted
 yum install gparted
 #in order to read ntfs partitions
-yum install ntfs-3g fuse 
+yum install ntfs-3g fuse ntfsprogs
 #torrent downloader
 yum install transmission
 #install chrome
