@@ -1,0 +1,33 @@
+#***************
+#   JENKINS
+#***************
+
+#run jenkins from port 80 of host
+#docker container run --name myjenkins -d -p 80:8080 jenkins
+docker run --name myjenkins -d -p 8080:8080 -p 50000:50000 -v DB_JENKINS:/var/jenkins_home jenkins/jenkins:lts
+# get into container using container id
+docker exec -ti myjenkins bash
+#retrieve jenkins admin passsword
+cat /var/jenkins_home/secrets/initialAdminPassword
+
+
+#*************************
+# Build up virtual (docker) cluster
+#*************************
+docker-machine stop $(docker-machine ls -q)               # Stop all running VMs
+docker-machine rm $(docker-machine ls -q) # Delete all VMs and their disk images
+
+docker-machine create --driver virtualbox --virtualbox-cpu-count "2" --virtualbox-memory "2048" myvm1
+docker-machine create --driver virtualbox --virtualbox-cpu-count "2" --virtualbox-memory "2048" myvm2
+docker-machine ls
+#docker-machine ssh myvm1
+# --virtualbox-disk-size "20000" (in MB)
+
+#real cluster VM: https://csinparallel.org/csinparallel/vm_cluster_macalester.html
+#https://medium.com/@okezieokpara/how-to-setup-a-local-linux-cluster-with-virtualbox-on-windows-93bd1995ec69
+
+
+#****************
+# final deployment DevOps Eco-system
+#****************
+docker container rm -f $(docker ps -aq)
