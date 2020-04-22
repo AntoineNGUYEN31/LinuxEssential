@@ -20,3 +20,5 @@ yum install hplip hplip-gui hpijs
 yum install p7zip
 #for rar
 yum install unar
+#exFAT format
+yum install exfat-utils fuse-exfat
