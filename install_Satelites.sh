@@ -22,3 +22,5 @@ yum install p7zip
 yum install unar
 #exFAT format
 yum install exfat-utils fuse-exfat
+#lsblk # list all device
+#mkfs.exfat -n Expansion /dev/sdb
